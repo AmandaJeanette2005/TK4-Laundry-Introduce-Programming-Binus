@@ -7,7 +7,7 @@ import java.util.List;
 // services.add(new Service(2, "Cuci Setrika", 8000));
 // services.add(new Service(3, "Setrika", 5000));
 
-public class Laundry {
+public class Repository {
 
     private List<Customer> customers;
     private List<Service> services;
@@ -19,7 +19,7 @@ public class Laundry {
     private static int counterOrders = 1;
     private static int counterOrderDetails = 1;
 
-    public Laundry() {
+    public Repository() {
         customers = new ArrayList<>();
         services = new ArrayList<>();
         cashiers = new ArrayList<>();

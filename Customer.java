@@ -1,7 +1,12 @@
+import java.util.Scanner;
+
 public class Customer {
     private String id;
     private String name;
     private String phoneNumber;
+
+    static Scanner scanner = new Scanner(System.in);
+    static Repository repository = new Repository();
 
     public Customer(String id, String name, String phoneNumber) {
         this.id = id;
@@ -33,8 +38,65 @@ public class Customer {
     public String toString() {
         return "ID Customer: " + id + "\nCustomer Name: " + name + "\nPhone Number: " + phoneNumber;
     }
-}
+    
 
+
+public static void customerMenu() {
+        while (true) {
+            System.out.println("\n============================== Customer Menu ==============================");
+            System.out.println("1. Add Customer");
+            System.out.println("2. Delete Customer");
+            System.out.println("3. Update Customer");
+            System.out.println("4. View Customers");
+            System.out.print("Choose an option [0:Exit Application]: ");
+
+            int option = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (option) {
+                case 0:
+                    return;
+                case 1:
+                    System.out.println("Enter customer name : ");
+                    String custName = scanner.nextLine();
+
+                    System.out.println("Enter customer phone number : ");
+                    String custPhoneNumber = scanner.nextLine();
+
+                    repository.addCustomer(custName, custPhoneNumber);
+                    break;
+                case 2:
+                    System.out.println("Enter customer id : ");
+                    String custId = scanner.nextLine();
+
+                    repository.deleteCustomer(custId);
+                    break;
+                case 3:
+                    System.out.println("Enter customer id");
+                    String idCustUpdate = scanner.nextLine();
+
+                    Customer findCust = repository.findCustById(idCustUpdate);
+                    if (findCust != null) {
+                        System.out.println("Enter customer name : ");
+                        String custNewName = scanner.nextLine();
+
+                        System.out.println("Enter customer phone number : ");
+                        String custNewPhoneNumber = scanner.nextLine();
+
+                        repository.updateCustomer(idCustUpdate, custNewName, custNewPhoneNumber);
+                    } else {
+                        System.out.println("Customer not found");
+                    }
+                    break;
+                case 4:
+                    repository.displayCustomer();
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
 // class CustomerService {
 // private ArrayList<Customer> customers = new ArrayList<>();
 // private int nextId = 1;

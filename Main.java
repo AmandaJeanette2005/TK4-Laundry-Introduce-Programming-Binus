@@ -9,7 +9,7 @@ public class Main {
     private static final String LAUNDRY_PHONE = "08123456789";
 
     static Scanner scanner = new Scanner(System.in);
-    static Laundry laundry = new Laundry();
+    static Repository repository = new Repository();
 
     public static void main(String[] args) {
         while (true) {
@@ -27,18 +27,18 @@ public class Main {
             System.out.println("Enter cashier phone number : ");
             String cashPhoneNumber = scanner.nextLine();
 
-            laundry.addCashiers(cashName, cashPhoneNumber);
+            repository.addCashiers(cashName, cashPhoneNumber);
 
             // ini function add service langsung tanpa inputan
-            laundry.addService("Cuci Kering", 6000);
-            laundry.addService("Cuci Setrika", 8000);
-            laundry.addService("Setrika", 5000);
-            laundry.addService("Jaket", 10000);
-            laundry.addService("Sprei", 20000);
+            repository.addService("Cuci Kering", 6000);
+            repository.addService("Cuci Setrika", 8000);
+            repository.addService("Setrika", 5000);
+            repository.addService("Jaket", 10000);
+            repository.addService("Sprei", 20000);
 
             System.out.println("==========List Layanan===============");
 
-            laundry.displayServices();
+            repository.displayServices();
 
             System.out.println("Menu:");
             System.out.println("1. Menu Customer");
@@ -53,76 +53,20 @@ public class Main {
                     exitApplication();
                     break;
                 case 1:
-                    customerMenu();
+                    Customer.customerMenu();
                     break;
                 case 2:
-                    // laundry.createOrder();
+                    // repository.createOrder();
                     // handleCreateOrder(scanner, customerService, orderService, services, addons,
                     // cashierName, cashierAddress, date);
                     break;
                 case 3:
-                    // laundry.createInvoiceOrder();
+                    // repository.createInvoiceOrder();
                     // handleCreateInvoice(scanner, orderService, cashierName, cashierAddress,
                     // date);
                     break;
                 default:
                     System.out.println("Invalid option menu");
-            }
-        }
-    }
-
-    public static void customerMenu() {
-        while (true) {
-            System.out.println("\n============================== Customer Menu ==============================");
-            System.out.println("1. Add Customer");
-            System.out.println("2. Delete Customer");
-            System.out.println("3. Update Customer");
-            System.out.println("4. View Customers");
-            System.out.print("Choose an option [0:Exit Application]: ");
-
-            int option = scanner.nextInt();
-            scanner.nextLine();
-
-            switch (option) {
-                case 0:
-                    return;
-                case 1:
-                    System.out.println("Enter customer name : ");
-                    String custName = scanner.nextLine();
-
-                    System.out.println("Enter customer phone number : ");
-                    String custPhoneNumber = scanner.nextLine();
-
-                    laundry.addCustomer(custName, custPhoneNumber);
-                    break;
-                case 2:
-                    System.out.println("Enter customer id : ");
-                    String custId = scanner.nextLine();
-
-                    laundry.deleteCustomer(custId);
-                    break;
-                case 3:
-                    System.out.println("Enter customer id");
-                    String idCustUpdate = scanner.nextLine();
-
-                    Customer findCust = laundry.findCustById(idCustUpdate);
-                    if (findCust != null) {
-                        System.out.println("Enter customer name : ");
-                        String custNewName = scanner.nextLine();
-
-                        System.out.println("Enter customer phone number : ");
-                        String custNewPhoneNumber = scanner.nextLine();
-
-                        laundry.updateCustomer(idCustUpdate, custNewName, custNewPhoneNumber);
-                    } else {
-                        System.out.println("Customer not found");
-                    }
-                    break;
-                case 4:
-                    laundry.displayCustomer();
-                    break;
-                default:
-                    break;
             }
         }
     }
