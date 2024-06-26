@@ -141,11 +141,11 @@ public class Repository {
     }
 
     // Order
-    // public void createOrder() {
+    public void createOrder() {
     // LocalDate date = LocalDate.now();
     // System.out.println("Date: " + date);
     // System.out.println();
-    // }
+    }
 
     // InvoiceOrder
     // public void createInvoiceOrder() {
