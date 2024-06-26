@@ -8,7 +8,7 @@ public class Main {
     private static final String LAUNDRY_ADDRESS = "Jl. Merdeka No. 1";
     private static final String LAUNDRY_PHONE = "08123456789";
 
-    static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);  
     static Repository repository = new Repository();
 
     public static void main(String[] args) {
